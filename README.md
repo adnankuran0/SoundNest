@@ -28,44 +28,44 @@ Add sounds, sound sets or musics to SoundNest root node in SoundManager scene.
 
 ```gdscript
 # Play a simple 2D sound
-SoundManager.PlaySound2D("footstep")
+SoundNest.PlaySound2D("footstep")
 
 # Play a 2D sound with custom pitch and random variation
-SoundManager.PlaySound2D("footstep", custom_pitch=1.2, random_pitch=true, random_pitch_range=0.1)
+SoundNest.PlaySound2D("footstep", custom_pitch=1.2, random_pitch=true, random_pitch_range=0.1)
 
 # Play a 3D sound at a position
-SoundManager.PlaySound3D("gunshot", Vector3(2,0,-3))
+SoundNest.PlaySound3D("gunshot", Vector3(2,0,-3))
 
 # Play a sound attached to a moving node
 var node = Node3D.new()
 add_child(node)
-SoundManager.PlaySoundAtNode("footstep", node)
+SoundNest.PlaySoundAtNode("footstep", node)
 ```
 ### Playing musics
 
 ```gdscript
 # Play or change music with fade-in 
-SoundManager.PlayMusic("background_music", fade_time=1.0)
+SoundNest.PlayMusic("background_music", fade_time=1.0)
 
 # Stop music with fade-out
-SoundManager.StopMusic(fade_time=1.0)
+SoundNest.StopMusic(fade_time=1.0)
 ```
 
 ### Controlling all sounds
 ```gdscript
 # Stop all sounds and music
-SoundManager.StopAll()
+SoundNest.StopAll()
 
 # Pause all sounds
-SoundManager.PauseAll()
+SoundNest.PauseAll()
 
 # Resume all sounds
-SoundManager.ResumeAll()
+SoundNest.ResumeAll()
 
 # Set volumes
-SoundManager.SetSFXVolume(-10.0)  # in dB
-SoundManager.SetMusicVolume(-5.0) # in dB
-SoundManager.SetMasterVolume(0.0) # in dB
+SoundNest.SetSFXVolume(-10.0)  # in dB
+SoundNest.SetMusicVolume(-5.0) # in dB
+SoundNest.SetMasterVolume(0.0) # in dB
 ```
 
 ### Tips
