@@ -15,7 +15,7 @@ It handles 2D & 3D sounds, music, and even sound sets with minimal fuss.
 
 ---
 
-##Installation
+## Installation
 Copy the addons/sound_manager directory into your res://addons/ directory.
 Enable SoundNest in project plugins.
 
