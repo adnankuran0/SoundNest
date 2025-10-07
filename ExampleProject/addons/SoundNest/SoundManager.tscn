@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://blt0j0miiwdqf"]
+
+[ext_resource type="Script" uid="uid://bd5wly0k1f3x7" path="res://addons/sound_manager/sound_manager.gd" id="1_1hqhi"]
+[ext_resource type="Script" uid="uid://cos0d5d5w7tev" path="res://addons/sound_manager/sound.gd" id="2_k70f4"]
+[ext_resource type="AudioStream" uid="uid://6u3b11n7ykmb" path="res://footstep.mp3" id="3_k70f4"]
+[ext_resource type="AudioStream" uid="uid://rut614kvf8kj" path="res://background_music.mp3" id="4_demku"]
+[ext_resource type="AudioStream" uid="uid://dsnnaqsxy78al" path="res://background_music_2.mp3" id="5_rud88"]
+
+[sub_resource type="Resource" id="Resource_demku"]
+script = ExtResource("2_k70f4")
+name = "footstep"
+stream = ExtResource("3_k70f4")
+metadata/_custom_type_script = "uid://cos0d5d5w7tev"
+
+[sub_resource type="Resource" id="Resource_rr7yh"]
+script = ExtResource("2_k70f4")
+name = "long_sound"
+stream = ExtResource("4_demku")
+metadata/_custom_type_script = "uid://cos0d5d5w7tev"
+
+[sub_resource type="Resource" id="Resource_rud88"]
+script = ExtResource("2_k70f4")
+name = "background_music"
+stream = ExtResource("4_demku")
+metadata/_custom_type_script = "uid://cos0d5d5w7tev"
+
+[sub_resource type="Resource" id="Resource_a7b86"]
+script = ExtResource("2_k70f4")
+name = "background_music2"
+stream = ExtResource("5_rud88")
+metadata/_custom_type_script = "uid://cos0d5d5w7tev"
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_1hqhi")
+_sounds = Array[ExtResource("2_k70f4")]([SubResource("Resource_demku"), SubResource("Resource_rr7yh")])
+_musics = Array[ExtResource("2_k70f4")]([SubResource("Resource_rud88"), SubResource("Resource_a7b86")])

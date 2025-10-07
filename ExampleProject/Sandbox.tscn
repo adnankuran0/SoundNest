@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://crw73u2dhmwvl"]
+
+[ext_resource type="Script" uid="uid://bmyojn5sgq6pv" path="res://example.gd" id="1_y8ncq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y8ncq"]
+sky_horizon_color = Color(0.6273, 0.6681577, 0.72023696, 1)
+ground_bottom_color = Color(0.08353493, 0.17796561, 0.29028267, 1)
+ground_horizon_color = Color(0.6273, 0.6681577, 0.72023696, 1)
+
+[sub_resource type="Sky" id="Sky_gaqdb"]
+sky_material = SubResource("ProceduralSkyMaterial_y8ncq")
+
+[sub_resource type="Environment" id="Environment_jgjqi"]
+background_mode = 2
+sky = SubResource("Sky_gaqdb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y8ncq"]
+noise_type = 3
+frequency = 0.1028
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gaqdb"]
+noise = SubResource("FastNoiseLite_y8ncq")
+seamless = true
+invert = true
+in_3d_space = true
+as_normal_map = true
+bump_strength = 5.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgjqi"]
+albedo_color = Color(0.4915833, 0.49158323, 0.49158323, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_gaqdb")
+
+[sub_resource type="Animation" id="Animation_y8ncq"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.807, 30, 1, 1, 0, 1.807, -30)
+
+[sub_resource type="Animation" id="Animation_gaqdb"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.8072524, 15)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gaqdb"]
+_data = {
+&"RESET": SubResource("Animation_gaqdb"),
+&"new_animation": SubResource("Animation_y8ncq")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgjqi"]
+
+[node name="Sandbox" type="Node3D"]
+script = ExtResource("1_y8ncq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jgjqi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.017450089, -0.27216443, 0.9620925, 0, 0.9622391, 0.27220586, -0.99984777, 0.0047500166, -0.016791156, 14.857752, 6.101784, -0.010217786)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(40, 0.94, 40)
+material = SubResource("StandardMaterial3D_jgjqi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gaqdb")
+}
+autoplay = "new_animation"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8072524, 15)
+mesh = SubResource("BoxMesh_jgjqi")
