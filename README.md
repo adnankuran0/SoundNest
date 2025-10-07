@@ -62,8 +62,9 @@ SoundManager.PauseAll()
 SoundManager.ResumeAll()
 
 # Set volumes
-SoundManager.SetSFXVolume(-10)  # in dB
-SoundManager.SetMusicVolume(-5) # in dB
+SoundManager.SetSFXVolume(-10.0)  # in dB
+SoundManager.SetMusicVolume(-5.0) # in dB
+SoundManager.SetMasterVolume(0.0) # in dB
 ```
 
 ### Tips
